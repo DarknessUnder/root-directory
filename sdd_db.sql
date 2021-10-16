@@ -44,14 +44,6 @@ CREATE TABLE `links` (
                           FOREIGN KEY (`course_id`) REFERENCES course(`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `links`;
-CREATE TABLE `links` (
-                         `course_id` int(11),
-                         `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'description',
-                         `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'url',
-                         FOREIGN KEY (`course_id`) REFERENCES course(`course_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 DROP TABLE IF EXISTS `grade`;
 CREATE TABLE `grade` (
                          `course_id` int(11),
