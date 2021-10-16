@@ -20,7 +20,7 @@ CREATE TABLE `user_collection` (
 DROP TABLE IF EXISTS `course`;
 CREATE TABLE `course` (
                           `course_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'course id',
-                          `course_name` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'course_name',
+                          `course_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'course_name',
                           `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'description',
                           `color` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'color',
                           `instructor` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'instructor',
@@ -64,7 +64,7 @@ CREATE TABLE `grade` (
 DROP TABLE IF EXISTS `task`;
 CREATE TABLE `task` (
                           `task_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'task id',
-                          `task_name` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'task_name',
+                          `task_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'task_name',
                           `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'description',
                           `color` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'color',
                           `instructor` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'instructor',
@@ -83,7 +83,7 @@ CREATE TABLE `course_task` (
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
                         `course_id` int(11),
-                        `category_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'category_name',
+                        `category_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'category_name',
                         `task_category_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'category_id',
                         `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'description',
                         FOREIGN KEY (`course_id`) REFERENCES course(`course_id`),
