@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sdd.dao.CourseMapper">
+  <resultMap id="BaseResultMap" type="com.example.sdd.entity.Course">
+    <id column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
+    <result column="instructor" jdbcType="VARCHAR" property="instructor" />
+    <result column="collection" jdbcType="VARCHAR" property="collection" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    course_id, course_name, description, color, instructor, collection
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.sdd.entity.Course">
+    <selectKey keyProperty="courseId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into course (course_name, description, color, 
+      instructor, collection)
+    values (#{courseName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, 
+      #{instructor,jdbcType=VARCHAR}, #{collection,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.sdd.entity.Course">
+    <selectKey keyProperty="courseId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="color != null">
+        color,
+      </if>
+      <if test="instructor != null">
+        instructor,
+      </if>
+      <if test="collection != null">
+        collection,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="instructor != null">
+        #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="collection != null">
+        #{collection,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.sdd.entity.Course">
+    update course
+    <set>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="instructor != null">
+        instructor = #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="collection != null">
+        collection = #{collection,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.sdd.entity.Course">
+    update course
+    set course_name = #{courseName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      instructor = #{instructor,jdbcType=VARCHAR},
+      collection = #{collection,jdbcType=VARCHAR}
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+</mapper>

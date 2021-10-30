@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sdd.dao.GradeMapper">
+  <resultMap id="BaseResultMap" type="com.example.sdd.entity.Grade">
+    <result column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="dropped" jdbcType="VARCHAR" property="dropped" />
+    <result column="total_grade" jdbcType="INTEGER" property="totalGrade" />
+    <result column="current_grade" jdbcType="INTEGER" property="currentGrade" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.sdd.entity.Grade">
+    insert into grade (course_id, dropped, total_grade, 
+      current_grade)
+    values (#{courseId,jdbcType=INTEGER}, #{dropped,jdbcType=VARCHAR}, #{totalGrade,jdbcType=INTEGER}, 
+      #{currentGrade,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.sdd.entity.Grade">
+    insert into grade
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="dropped != null">
+        dropped,
+      </if>
+      <if test="totalGrade != null">
+        total_grade,
+      </if>
+      <if test="currentGrade != null">
+        current_grade,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="dropped != null">
+        #{dropped,jdbcType=VARCHAR},
+      </if>
+      <if test="totalGrade != null">
+        #{totalGrade,jdbcType=INTEGER},
+      </if>
+      <if test="currentGrade != null">
+        #{currentGrade,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
