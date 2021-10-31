@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sdd.dao.UserCollectionMapper">
+  <resultMap id="BaseResultMap" type="com.example.sdd.entity.UserCollection">
+    <id column="collection_id" jdbcType="INTEGER" property="collectionId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="collection_name" jdbcType="VARCHAR" property="collectionName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    collection_id, user_id, collection_name, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_collection
+    where collection_id = #{collectionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_collection
+    where collection_id = #{collectionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.sdd.entity.UserCollection">
+    insert into user_collection (collection_id, user_id, collection_name, 
+      description)
+    values (#{collectionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{collectionName,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.sdd.entity.UserCollection">
+    insert into user_collection
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectionId != null">
+        collection_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="collectionName != null">
+        collection_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectionId != null">
+        #{collectionId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionName != null">
+        #{collectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.sdd.entity.UserCollection">
+    update user_collection
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionName != null">
+        collection_name = #{collectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where collection_id = #{collectionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.sdd.entity.UserCollection">
+    update user_collection
+    set user_id = #{userId,jdbcType=INTEGER},
+      collection_name = #{collectionName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where collection_id = #{collectionId,jdbcType=INTEGER}
+  </update>
+</mapper>

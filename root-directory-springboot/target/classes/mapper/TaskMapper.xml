@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sdd.dao.TaskMapper">
+  <resultMap id="BaseResultMap" type="com.example.sdd.entity.Task">
+    <id column="task_id" jdbcType="INTEGER" property="taskId" />
+    <result column="task_name" jdbcType="VARCHAR" property="taskName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
+    <result column="instructor" jdbcType="VARCHAR" property="instructor" />
+    <result column="collection" jdbcType="VARCHAR" property="collection" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    task_id, task_name, description, color, instructor, collection
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.sdd.entity.Task">
+    insert into task (task_id, task_name, description, 
+      color, instructor, collection
+      )
+    values (#{taskId,jdbcType=INTEGER}, #{taskName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{color,jdbcType=VARCHAR}, #{instructor,jdbcType=VARCHAR}, #{collection,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.sdd.entity.Task">
+    insert into task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="taskName != null">
+        task_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="color != null">
+        color,
+      </if>
+      <if test="instructor != null">
+        instructor,
+      </if>
+      <if test="collection != null">
+        collection,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="taskName != null">
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="instructor != null">
+        #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="collection != null">
+        #{collection,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.sdd.entity.Task">
+    update task
+    <set>
+      <if test="taskName != null">
+        task_name = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="instructor != null">
+        instructor = #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="collection != null">
+        collection = #{collection,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.sdd.entity.Task">
+    update task
+    set task_name = #{taskName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      instructor = #{instructor,jdbcType=VARCHAR},
+      collection = #{collection,jdbcType=VARCHAR}
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+</mapper>
