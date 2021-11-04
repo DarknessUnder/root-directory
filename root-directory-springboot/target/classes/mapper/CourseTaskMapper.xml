@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sdd.dao.CourseTaskMapper">
+  <resultMap id="BaseResultMap" type="com.example.sdd.entity.CourseTask">
+    <result column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="task_id" jdbcType="INTEGER" property="taskId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.sdd.entity.CourseTask">
+    insert into course_task (course_id, task_id)
+    values (#{courseId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.sdd.entity.CourseTask">
+    insert into course_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
