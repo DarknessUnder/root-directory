@@ -124,8 +124,10 @@
             <b>Note:</b> Grades are not final.
 
             <br /><br />
+            <input type="button" value="Click Me" onclick="showTableData()">
 
             <table
+              id="gradeTable"
               class="table"
               style="max-width: 900px; margin-left: auto; margin-right: auto"
             >
@@ -139,12 +141,12 @@
               </tr>
 
 
-              <tr>
+              <tr classname="row">
                 <td align="right">10/24/2021</td>
                 <td>Quiz 1</td>
                 <td align="center">50</td>
                 <td align="center">100</td>
-                <td align="center">5%</td>
+                <td align="center">15%</td>
                 <td align="center"><script type="text/javascript">
                   function newPopup(url) {
                     popupWindow = window.open(
@@ -155,7 +157,24 @@
                     ></a></p></td>
               </tr>
 
-
+              <tr classname="row">
+                <td align="right">10/30/2021</td>
+                <td>HW1</td>
+                <td align="center">10</td>
+                <td align="center">10</td>
+                <td align="center">5%</td>
+                <td align="center"><script type="text/javascript">
+                  function newPopup(url) {
+                    popupWindow = window.open(
+                      url,'popUpWindow','height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+                  }
+                  </script>
+                  <p><a href="./inquiry.html"><i class="fa fa-laptop fa-lg"></i
+                    ></a></p></td>
+              </tr>
+              <tr>
+                <td align=right id="demo"> {{showTableData()}} </td>
+              </tr>
 
 
             </table>
@@ -197,6 +216,28 @@
       </footer>
     </div>
   </body>
+
+  <script>
+    function showTableData() {
+      var total = 0;
+      var tables = document.getElementsByTagName("table");
+      var table = tables[0];
+      var allRows = table.getElementsByTagName('tr');
+      for(var rowIt = 1; rowIt < allRows.length; rowIt++) {
+        console.log("ROW" + rowIt);
+        var row = allRows[rowIt];
+        var columns = row.getElementsByTagName('td');
+        for(columnIt = 2; columnIt < columns.length-1; columnIt++) {
+          var column = columns[columnIt];
+          total += parseFloat(column.innerHTML);
+          console.log(column.innerHTML);
+        }
+      }
+      console.log(total);
+      document.getElementById("demo").innerHTML = total;
+      return total;
+    }
+</script>
 
   <script src="../js/jquery.min.js" type="text/javascript"></script>
   <script src="../js/bootstrap.min.js" type="text/javascript"></script>
