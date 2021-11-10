@@ -123,10 +123,10 @@
         <div class="container">
           <div class="section text-left">
             <h2 class="title"></h2>
-            <b>Note:</b> Grades are not final.
+            <b>Note: Grades are not final. </b>
 
             <br /><br />
-            <input type="button" value="Click Me" onclick="showTableData()">
+            <input type="button" value="Show Total Score" onclick="showTableData()" >
 
             <table
               id="gradeTable"
@@ -168,7 +168,7 @@
                 <td>HW1</td>
                 <td align="center">10</td>
                 <td align="center">10</td>
-                <td align="center">5%</td>
+                <td align="center">14%</td>
                 <td align="center"><script type="text/javascript">
                   function newPopup(url) {
                     popupWindow = window.open(
@@ -178,8 +178,27 @@
                   <p><a href="./inquiry.html"><i class="fa fa-laptop fa-lg"></i
                     ></a></p></td>
               </tr>
+
+              <tr classname="row">
+                <td align="right">10/30/2021</td>
+                <td>Presentation</td>
+                <td align="center">85</td>
+                <td align="center">100</td>
+                <td align="center">30%</td>
+                <td align="center"><script type="text/javascript">
+                  function newPopup(url) {
+                    popupWindow = window.open(
+                      url,'popUpWindow','height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+                  }
+                  </script>
+                  <p><a href="./inquiry.html"><i class="fa fa-laptop fa-lg"></i
+                    ></a></p></td>
+              </tr>
+
+
+              <!-- GRADE GOES HERE-->
               <tr>
-                <td align=right id="demo"> {{showTableData()}} </td>
+                <td align=right id="demo"> Total Score  </td>
               </tr>
 
 
@@ -192,15 +211,8 @@
           <nav class="pull-left">
             <ul>
               <li>
-                <a href="http://stat.duke.edu/"
-                  ><i class="button-icon fa fa-2x fa-map-marker"></i> Duke
-                  StatSci</a
-                >
-              </li>
-
-              <li>
-                <a href="https://rstudio.cloud/"
-                  ><i class="icon-rlogo" style="font-size: 150%"></i> RStudio</a
+                <a href="https://science.rpi.edu/computer-science"
+                  ><i class="button-icon fa fa-2x fa-map-marker"></i> RPI Computer Science</a
                 >
               </li>
 
@@ -226,23 +238,43 @@
 
   <script>
     function showTableData() {
+      var score = 0;
       var total = 0;
       var tables = document.getElementsByTagName("table");
       var table = tables[0];
       var allRows = table.getElementsByTagName('tr');
-      for(var rowIt = 1; rowIt < allRows.length; rowIt++) {
-        console.log("ROW" + rowIt);
+      for(var rowIt = 1; rowIt < allRows.length-1; rowIt++) {
+        // console.log("ROW" + rowIt);
         var row = allRows[rowIt];
         var columns = row.getElementsByTagName('td');
+        var temp = 0;
+        var tempTotal = 0;
         for(columnIt = 2; columnIt < columns.length-1; columnIt++) {
           var column = columns[columnIt];
-          total += parseFloat(column.innerHTML);
-          console.log(column.innerHTML);
+          if(columnIt == 2){
+            temp += parseFloat(column.innerHTML);
+          }else if(columnIt == 3){
+            // tempTotal += parseFloat(column.innerHTML);
+            temp /= parseFloat(column.innerHTML);
+            // temp *= 100;
+          }else{
+            temp *= parseFloat(column.innerHTML)*100;
+            // tempTotal *= parseFloat(column.innerHTML)/100;
+            tempTotal += parseFloat(column.innerHTML);
+          }
         }
+        score += temp;
+        // console.log("score is " + score);
+        total += tempTotal;
+        // console.log("total is " + total);
+        // console.log(columns);
+        // var column = parseFloat(columns[2]);
+        // console.log(parseFloat((columns[2]).innerHTML));
+        // total += parseFloat(columns[2].innerHTML)/parseFloat(columns[3].innerHTML)*parseFloat(columns[4].innerHTML);
       }
-      console.log(total);
-      document.getElementById("demo").innerHTML = total;
-      return total;
+      document.getElementById("demo").innerHTML = Math.round(score/total*100)/100 + "%";
+      // document.getElementById("demo").innerHTML = Math.round(score/total*10000)/100;
+      return score/total;
     }
 </script>
 
