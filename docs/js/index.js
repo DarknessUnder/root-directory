@@ -25,6 +25,19 @@ $(function () {
         }
         state = false;
     });
+
+    $(".profile-page").click(function () {
+        if(state){
+            $("#navLeft").remove();
+            $("#navBLeft").load("navEmpty.html");
+            state = false;
+        }
+        else{
+            state = true;
+        }
+    });
+
+
     
   });
 
