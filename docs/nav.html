@@ -1,0 +1,24 @@
+<!-- Navigation bar component-->
+<nav
+  id="navLeft"
+  class="navbar navbar-fixed-left navbar-color-on-scroll navLeft"
+>
+  <div id="navDiv">
+    <h4 id="homeLink" class="pageLink">Home</h4>
+    <h4 class="pageLink">Calendar</h4>
+    <h4 class="pageLink">Classes</h4>
+    <p style="margin-left: 40px" class="pageLink">CSCI-1100</p>
+    <p style="margin-left: 40px" class="pageLink">BIOL-2120</p>
+    <p style="margin-left: 40px" class="pageLink">CSCI-4440</p>
+    <h4 class="pageLink">Clubs</h4>
+    <p style="margin-left: 40px" class="pageLink">RPI-TV</p>
+    <p style="margin-left: 40px" class="pageLink">Curling</p>
+  </div>
+</nav>
+
+<script>
+  $(".pageLink").click(function () {
+    var link = "" + $(this).text().toLowerCase() + ".html";
+    window.location.href = link;
+  });
+</script>
