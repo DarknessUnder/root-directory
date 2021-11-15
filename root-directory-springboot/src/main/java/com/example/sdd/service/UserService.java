@@ -17,4 +17,14 @@ public class UserService {
         String passwordMd5 = MD5Util.MD5Encode(password, "UTF-8");
         return userMapper.login(userName, passwordMd5);
     }
+
+    public int register(String userName, String password, String email)
+    {
+        String passwordMd5 = MD5Util.MD5Encode(password, "UTF-8");
+        User temp_usr = new User();
+        temp_usr.setEmail(email);
+        temp_usr.setUserName(userName);
+        temp_usr.setPassword(passwordMd5);
+        return userMapper.insert(temp_usr);
+    }
 }

@@ -1,0 +1,27 @@
+#openDesc{
+    left:100px;
+}
+.pageLink{
+    margin-left: 5px;
+    cursor:pointer;
+}
+
+#navLeft{
+    left:2px;
+  height: 80%;
+  width: 150px;
+  background-color: cornflowerblue;
+  position: fixed;
+  top: 15%;
+  z-index: 3;
+}
+
+#navEmpty{
+    left:2px;
+  height: 80%;
+  width: 40px;
+  background-color: cornflowerblue;
+  position: fixed;
+  top: 15%;
+  z-index: 3;
+}

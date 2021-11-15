@@ -22,10 +22,10 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.example.sdd.entity.User">
-    insert into user (user_id, user_name, password, 
-      email, locked)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{locked,jdbcType=INTEGER})
+    insert into user (user_name, password,
+      email)
+    values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.sdd.entity.User">
     insert into user
