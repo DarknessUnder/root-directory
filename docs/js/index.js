@@ -41,5 +41,20 @@ $(function () {
         }
         state = false;
     });
-  });
+
+
+
+
+    $(".subPage").click(function () {
+        var link = "";
+        if($(this).attr("subtype") === "Classes")
+        {
+            link = "../../../html/" + $(this).attr("subtype") + "/" + $("body").attr("name") + ".html";
+        }
+        else{
+            link = "../../../html/" + $(this).attr("subtype") + "/" + $(this).attr("subtype") + "-" + $("body").attr("name") + ".html";
+        }
+        window.location.href=link;
+    });
+});
 

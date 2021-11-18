@@ -6,6 +6,10 @@
     cursor:pointer;
 }
 
+.subPage{
+  cursor:pointer;
+}
+
 #navLeft{
     left:2px;
   height: 80%;
