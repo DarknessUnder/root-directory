@@ -70,6 +70,14 @@
 
         <div class="collapse navbar-collapse" id="navigation-example">
           <ul class="nav navbar-nav navbar-right">
+
+            <li class="nav-item">
+              <a>
+                  <i class="material-icons">dark_mode</i>
+                  <span> <button class="btn-toggle"> DARK MODE </button> </span>
+                </a>
+            </li>
+
             <li class="nav-item subPage" subtype="Classes">
               <a>
                 <i class="sidebar-button-icon fa fa-lg fa-home"></i>
@@ -354,6 +362,16 @@
     </div>
   </body>
   <nav id="navBLeft"></nav>
+
+  <script>
+    const btn = document.querySelector(".btn-toggle");
+
+    btn.addEventListener("click", function () {
+      document.getElementsByClassName("main")[0].classList.toggle("inverse");
+      document.body.classList.toggle("inverse");
+    })
+
+  </script>
 
   <script src="../../../js/jquery.min.js" type="text/javascript"></script>
 
