@@ -1,0 +1,94 @@
+<nav
+  class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll"
+  style="height: 70px"
+>
+  <div class="container">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle"
+        data-toggle="collapse"
+        data-target="#navigation-example"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../../../home.html">Root Directory</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navigation-example">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <a>
+            <i class="material-icons">dark_mode</i>
+            <span> <button class="btn-toggle">DARK MODE</button> </span>
+          </a>
+        </li>
+
+        <li class="nav-item subPage" subtype="Classes">
+          <a>
+            <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+            <span>Class Home</span>
+          </a>
+        </li>
+
+        <li class="nav-item subPage" subtype="syllabus">
+          <a>
+            <i class="material-icons">date_range</i>
+            <span>Syllabus</span>
+          </a>
+        </li>
+
+        <li class="nav-item subPage" subtype="grade">
+          <a>
+            <i class="material-icons">gavel</i>
+            <span>Caculate Grade</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            href="https://github.com/DarknessUnder/root-directory"
+            data-target="https://github.com/DarknessUnder/root-directory"
+          >
+            <i class="fab fa-github fa-lg"></i>
+            <span>GitHub</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.querySelector(".btn-toggle");
+
+  btn.addEventListener("click", function () {
+    document.getElementsByClassName("main")[0].classList.toggle("inverse");
+    document.body.classList.toggle("inverse");
+  });
+
+  $(".subPage").click(function () {
+    var link = "";
+    if ($(this).attr("subtype") === "Classes") {
+      link =
+        "../../../html/" +
+        $(this).attr("subtype") +
+        "/" +
+        $("body").attr("name") +
+        ".html";
+    } else {
+      link =
+        "../../../html/" +
+        $(this).attr("subtype") +
+        "/" +
+        $(this).attr("subtype") +
+        "-" +
+        $("body").attr("name") +
+        ".html";
+    }
+    window.location.href = link;
+  });
+</script>

@@ -3,6 +3,7 @@ $(function () {
     //load navigation bar
     var state = true;
     $("#navBLeft").load("../../../../html/Components/nav.html");
+    $("#navT").load("../../../../html/Components/navTop.html");
     $(".pageLink").click(function(){
         var link = "./html/" + $(this).attr("path") + ".html";
         window.location.href=link;

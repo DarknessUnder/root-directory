@@ -48,6 +48,7 @@
   <body class="profile-page">
     <nav
       class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll"
+      style="height: 70px"
     >
       <div class="container">
         <div class="navbar-header">
@@ -58,46 +59,19 @@
             data-target="#navigation-example"
           >
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../../">CSCI 4440: Grades</a>
+          <a class="navbar-brand" href="./index.html">Root Directory</a>
         </div>
-
         <div class="collapse navbar-collapse" id="navigation-example">
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-              <a href="../../csci-4440.html">
-                <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                <span>Home</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="../../syllabus-csci-4440.html">
-                <i class="material-icons">date_range</i>
-                <span>Syllabus</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                href="../../grade-csci-4440.html"
-                data-target="/policies/index.html"
-              >
-                <i class="material-icons">gavel</i>
-                <span>Caculate Grade</span>
-              </a>
-            </li>
-
-             <li class="nav-item">
               <a
                 href="https://github.com/DarknessUnder/root-directory"
                 data-target="https://github.com/DarknessUnder/root-directory"
               >
-                <i class="fab fa-github fa-lg"></i>
-                <span>GitHub</span>
+                <i class="fab fa-github fa-lg"></i> <span>GitHub</span>
               </a>
             </li>
           </ul>
@@ -125,11 +99,11 @@
                 <label for="nlink">Event Link </label><br>
                 <input type="text" id="nlink" name="nlink"> <br>
                 <label for="nyear">Event Year </label><br>
-                <input type="text" id="nyear" name="nyear"><br>
+                <input type="text" id="nyear" name="nyear" value = 2021><br>
                 <label for="nmonth">Event Month </label><br>
-                <input type="text" id="nmonth" name="nmonth"><br>
-                <label for="dnate">Event Date </label><br>
-                <input type="text" id="ndate" name="ndate"><br>
+                <input type="text" id="nmonth" name="nmonth" value = 11><br>
+                <label for="nnate">Event Date </label><br>
+                <input type="text" id="ndate" name="ndate" value = 22><br>
                 
                 <input type="submit" value="Add New Event"><br>
             </form>

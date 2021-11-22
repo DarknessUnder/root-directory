@@ -27,6 +27,10 @@ $(function () {
     events.push(tempElement);
     $("#caleandar").empty();
     caleandar(element, events, settings);
+
+    $('#nname').val('');
+    $('#nlink').val('');
+    $('#ndate').val(22);
     event.preventDefault();
   });
 })
