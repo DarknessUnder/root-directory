@@ -5,11 +5,11 @@
     <link rel="icon" sizes="76x76" href="../img/favicon.png" />
     <link rel="icon" type="image/png" href="../img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="stylesheet" type="text/css" href="./css/index.css" />
-    <link rel="stylesheet" type="text/css" href="./calender.css" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/calender.css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/theme2.css"/>
+    <link rel="stylesheet" href="../css/theme2.css"/>
 
     <title>CSCI 4440: Grades</title>
 
@@ -27,10 +27,7 @@
       type="text/css"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
     />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
-    />
+
     <link
       rel="stylesheet"
       href="https://cdn.rawgit.com/gaborcsardi/r-font/master/rlogo.css"
@@ -44,8 +41,8 @@
       src="https://use.fontawesome.com/releases/v5.0.0/js/v4-shims.js"
     ></script>
 
-    <link href="./css/bootstrap.min.css" rel="stylesheet" />
-    <link href="./css/material-kit.css" rel="stylesheet" />
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/material-kit.css" rel="stylesheet" />
   </head>
 
   <body class="profile-page">
@@ -65,20 +62,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../">CSCI 4440: Grades</a>
+          <a class="navbar-brand" href="../../">CSCI 4440: Grades</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navigation-example">
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-              <a href="./csci-4440.html">
+              <a href="../../csci-4440.html">
                 <i class="sidebar-button-icon fa fa-lg fa-home"></i>
                 <span>Home</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="./syllabus-csci-4440.html">
+              <a href="../../syllabus-csci-4440.html">
                 <i class="material-icons">date_range</i>
                 <span>Syllabus</span>
               </a>
@@ -86,7 +83,7 @@
 
             <li class="nav-item">
               <a
-                href="./grade-csci-4440.html"
+                href="../../grade-csci-4440.html"
                 data-target="/policies/index.html"
               >
                 <i class="material-icons">gavel</i>
@@ -120,7 +117,25 @@
           <div class="section text-left">
             <h2 class="title"></h2>
 
-            <div id="caleandar"></div>
+
+            <form id="newEvent" class = "col-md-5" style = "text-align: center;">   
+
+                <label for="nname">Event Name</label><br>
+                <input type="text" id="nname" name="nname"> <br>
+                <label for="nlink">Event Link </label><br>
+                <input type="text" id="nlink" name="nlink"> <br>
+                <label for="nyear">Event Year </label><br>
+                <input type="text" id="nyear" name="nyear"><br>
+                <label for="nmonth">Event Month </label><br>
+                <input type="text" id="nmonth" name="nmonth"><br>
+                <label for="dnate">Event Date </label><br>
+                <input type="text" id="ndate" name="ndate"><br>
+                
+                <input type="submit" value="Add New Event"><br>
+            </form>
+
+            <div id="caleandar" class = "col-md-5"></div>
+
         </div>
       </div>
       <footer class="footer">
@@ -143,27 +158,29 @@
             </ul>
           </nav>
 
+              
+
+
 
           <div class="copyright pull-right">
-            <img src="../img/cc-by.svg" />
+            <img src="../../img/cc-by.svg" />
           </div>
-              <div id="caleandar"> </div>
+ 
         </div>
       </footer>
     </div>
     <nav id="navBLeft"></nav>
   </body>
 
-  <script src="../js/jquery.min.js" type="text/javascript"></script>
-  <script src="./js/index.js" type="text/javascript"></script>
-  <script type="text/javascript" src="js/caleandar.js"></script>
-  <script type="text/javascript" src="js/demo.js"></script>
-  <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="../js/material.min.js"></script>
+  <script src="../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../js/index.js" type="text/javascript"></script>
+  <script type="text/javascript" src="../js/caleandar.js"></script>
+  <script type="text/javascript" src="../js/demo.js"></script>
+  <script src="../../js/material.min.js"></script>
 
-  <script src="../js/nouislider.min.js" type="text/javascript"></script>
+  <script src="../../js/nouislider.min.js" type="text/javascript"></script>
 
-  <script src="../js/bootstrap-datepicker.js" type="text/javascript"></script>
+  <script src="../../js/bootstrap-datepicker.js" type="text/javascript"></script>
 
-  <script src="../js/material-kit.js" type="text/javascript"></script>
+  <script src="../../js/material-kit.js" type="text/javascript"></script>
 </html>

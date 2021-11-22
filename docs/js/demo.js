@@ -8,3 +8,25 @@ var events = [
 var settings = {};
 var element = document.getElementById('caleandar');
 caleandar(element, events, settings);
+
+$(function () {
+  function addEvent() {
+    var tempElement = {'Date': new Date(2021, 10, 22), 'Title': 'SDD Beta Demo', 'Link': 'index.html'};
+    events.push(tempElement);
+    $("#caleandar").empty();
+    caleandar(element, events, settings);
+  };
+  addEvent();
+
+
+  $('#newEvent').submit(function(event) {
+
+    var tempNew = $('#newEvent').serializeArray();
+
+    var tempElement = {'Date': new Date(tempNew[2].value, tempNew[3].value -1, tempNew[4].value), 'Title': tempNew[0].value, 'Link': tempNew[1].value};
+    events.push(tempElement);
+    $("#caleandar").empty();
+    caleandar(element, events, settings);
+    event.preventDefault();
+  });
+})
