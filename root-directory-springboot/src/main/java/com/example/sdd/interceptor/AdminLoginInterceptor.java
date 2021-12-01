@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminLoginInterceptor implements HandlerInterceptor{
 
     @Override
+    //admin login interceptor
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         System.out.println("进入拦截器...");
         request.getSession().getAttribute("loginUser");
