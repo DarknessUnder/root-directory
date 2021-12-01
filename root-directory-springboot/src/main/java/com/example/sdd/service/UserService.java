@@ -13,11 +13,13 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
+    //user login service
     public User login(String userName, String password) {
         String passwordMd5 = MD5Util.MD5Encode(password, "UTF-8");
         return userMapper.login(userName, passwordMd5);
     }
 
+    //user register with MD5 encoding
     public int register(String userName, String password, String email)
     {
         String passwordMd5 = MD5Util.MD5Encode(password, "UTF-8");
