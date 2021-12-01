@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 
 public class MD5Util {
 
+    //byte array to hex string operation
     private static String byteArrayToHexString(byte b[]) {
         StringBuffer resultSb = new StringBuffer();
         for (int i = 0; i < b.length; i++)
@@ -12,6 +13,7 @@ public class MD5Util {
         return resultSb.toString();
     }
 
+    //byte to hex string operation
     private static String byteToHexString(byte b) {
         int n = b;
         if (n < 0)
@@ -21,6 +23,7 @@ public class MD5Util {
         return hexDigits[d1] + hexDigits[d2];
     }
 
+    //MD5 encode operation
     public static String MD5Encode(String origin, String charsetname) {
         String resultString = null;
         try {
