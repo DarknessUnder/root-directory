@@ -22,14 +22,18 @@ public class ErrorPageController implements ErrorController{
     @Autowired
     private ErrorAttributes errorAttributes;
     private final static String ERROR_PATH = "/error";
+    
     public ErrorPageController(ErrorAttributes errorAttributes) {
         this.errorAttributes = errorAttributes;
     }
+    
     public ErrorPageController() {
         if (errorPageController == null) {
             errorPageController = new ErrorPageController(errorAttributes);
         }
     }
+    
+    //mvc view getmapping
     @RequestMapping(value = ERROR_PATH, produces = "text/html")
     public ModelAndView errorHtml(HttpServletRequest request) {
         HttpStatus status = getStatus(request);
@@ -43,6 +47,7 @@ public class ErrorPageController implements ErrorController{
     }
 
 
+    //get error page status
     private HttpStatus getStatus(HttpServletRequest request) {
         Integer statusCode = (Integer) request
                 .getAttribute("javax.servlet.error.status_code");
