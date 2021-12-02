@@ -112,6 +112,60 @@
               style="float: right"
             />
 
+            <!-- <input
+              type="button"
+              value="Add Grade"
+              onclick="insertGrade()"
+              style="float: right"
+            /> -->
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              New Grade Entry
+            </button>
+
+           <!-- MODAL -->
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Grade</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Date">Date</label>
+                    <input type="date" class="form-control" id="gradeDate" placeholder="Enter Date">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Assignment</label>
+                    <input type="text" class="form-control" id="gradeAssignment" placeholder="Assignment Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Grade</label>
+                    <input type="number" class="form-control" id="gradeGrade" placeholder="Grade Received">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Max</label>
+                    <input type="number" class="form-control" id="gradeMax" placeholder="Max Grade">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Weight</label>
+                    <input type="number" class="form-control" id="gradeWeight" placeholder="Weight in Percent">
+                  </div>
+                </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="insertGrade($('#gradeDate').val(), $('#gradeAssignment').val(), $('#gradeGrade').val(), $('#gradeMax').val(), $('#gradeWeight').val() )">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TABLE -->
+
             <table
               id="gradeTable"
               class="table"
@@ -376,7 +430,9 @@
                 <td align="center" id="demo">0%</td>
               </tr>
             </table>
+            
           </div>
+          
           <b style="float: right">Note: Grades are not final. </b>
         </div>
       </div>
@@ -409,6 +465,45 @@
   </body>
 
   <script>
+    function insertGrade(newDate, newAssignment, newGrade, newMax, newWeight){
+      var tables = document.getElementsByTagName("table");
+      var table = tables[0];
+      var row = table.insertRow(1);
+      var cell0 = row.insertCell(0);
+      var cell1 = row.insertCell(1);
+      var cell2 = row.insertCell(2);
+      var cell3 = row.insertCell(3);
+      var cell4 = row.insertCell(4);
+      var cell5 = row.insertCell(5);
+      cell0.setAttribute("align", "right");
+      var year = String(newDate).slice(0,4);
+      var month = String(newDate).slice(5,7);
+      var date = String(newDate).slice(8,);
+      cell0.innerHTML = month + "/" + date + "/" + year;
+      cell1.innerHTML = newAssignment;
+      cell2.setAttribute("align", "center");
+      cell2.innerHTML = newGrade;
+      cell3.setAttribute("align", "center");
+      cell3.innerHTML = newMax;
+      cell4.setAttribute("align", "center");
+      cell4.innerHTML = newWeight + '%';
+      cell5.setAttribute("align", "center");
+      cell5.innerHTML = '<i color= "#6CA0DC " class="fa fa-laptop fa-lg"></i>';
+    }
+
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+  
+  $('#myModal').on('hidden.bs.modal', function (e) {
+  var modal = $(this);//The modal which is opened
+  modal.find("input").val("");//Clear all the input fileds inside that modal.
+});
+
+})
+
+  </script>
+
+  <script>
     function showTableData() {
       var score = 0;
       var total = 0;
@@ -416,7 +511,6 @@
       var table = tables[0];
       var allRows = table.getElementsByTagName("tr");
       for (var rowIt = 1; rowIt < allRows.length - 1; rowIt++) {
-        // console.log("ROW" + rowIt);
         var row = allRows[rowIt];
         var columns = row.getElementsByTagName("td");
         var temp = 0;
@@ -426,27 +520,17 @@
           if (columnIt == 2) {
             temp += parseFloat(column.innerHTML);
           } else if (columnIt == 3) {
-            // tempTotal += parseFloat(column.innerHTML);
             temp /= parseFloat(column.innerHTML);
-            // temp *= 100;
           } else {
             temp *= parseFloat(column.innerHTML) * 100;
-            // tempTotal *= parseFloat(column.innerHTML)/100;
             tempTotal += parseFloat(column.innerHTML);
           }
         }
         score += temp;
-        // console.log("score is " + score);
         total += tempTotal;
-        // console.log("total is " + total);
-        // console.log(columns);
-        // var column = parseFloat(columns[2]);
-        // console.log(parseFloat((columns[2]).innerHTML));
-        // total += parseFloat(columns[2].innerHTML)/parseFloat(columns[3].innerHTML)*parseFloat(columns[4].innerHTML);
       }
       document.getElementById("demo").innerHTML =
         Math.round((score / total) * 100) / 100 + "%";
-      // document.getElementById("demo").innerHTML = Math.round(score/total*10000)/100;
       return score / total;
     }
 
