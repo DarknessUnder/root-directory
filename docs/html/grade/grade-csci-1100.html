@@ -202,6 +202,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -226,6 +227,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -250,6 +252,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -274,6 +277,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -298,6 +302,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -322,6 +327,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -346,6 +352,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -370,6 +377,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -394,6 +402,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -418,6 +427,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <!-- GRADE GOES HERE-->
@@ -475,6 +485,7 @@
       var cell3 = row.insertCell(3);
       var cell4 = row.insertCell(4);
       var cell5 = row.insertCell(5);
+      var cell6 = row.insertCell(6);
       cell0.setAttribute("align", "right");
       var year = String(newDate).slice(0,4);
       var month = String(newDate).slice(5,7);
@@ -489,7 +500,14 @@
       cell4.innerHTML = newWeight + '%';
       cell5.setAttribute("align", "center");
       cell5.innerHTML = '<i color= "#6CA0DC " class="fa fa-laptop fa-lg"></i>';
+      cell6.innerHTML = '<td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>';
     }
+
+    function deleteRow(o) {
+     var p=o.parentNode.parentNode;
+         p.parentNode.removeChild(p);
+    }
+
 
     $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
@@ -505,34 +523,43 @@
 
   <script>
     function showTableData() {
-      var score = 0;
-      var total = 0;
-      var tables = document.getElementsByTagName("table");
-      var table = tables[0];
-      var allRows = table.getElementsByTagName("tr");
-      for (var rowIt = 1; rowIt < allRows.length - 1; rowIt++) {
-        var row = allRows[rowIt];
-        var columns = row.getElementsByTagName("td");
-        var temp = 0;
-        var tempTotal = 0;
-        for (columnIt = 2; columnIt < columns.length - 1; columnIt++) {
-          var column = columns[columnIt];
-          if (columnIt == 2) {
-            temp += parseFloat(column.innerHTML);
-          } else if (columnIt == 3) {
-            temp /= parseFloat(column.innerHTML);
-          } else {
-            temp *= parseFloat(column.innerHTML) * 100;
-            tempTotal += parseFloat(column.innerHTML);
-          }
+    var score = 0;
+    var total = 0;
+    var tables = document.getElementsByTagName("table");
+    var table = tables[0];
+    var allRows = table.getElementsByTagName("tr");
+    var rowIt = 0;
+    var row = 0;
+    var columns = 0;
+    var temp = 0;
+    var tempTotal = 0;
+    var columnIt = 0;
+    var column = 0;
+    var totalScore = 0;
+    for (rowIt = 1; rowIt < allRows.length - 1; rowIt += 1) {
+        row = allRows[rowIt];
+        columns = row.getElementsByTagName("td");
+        temp = 0;
+        tempTotal = 0;
+        for (columnIt = 2; columnIt < columns.length - 2; columnIt += 1) {
+            column = columns[columnIt];
+            if (columnIt === 2) {
+                temp += parseFloat(column.innerHTML);
+            } else if (columnIt === 3) {
+                temp = temp / parseFloat(column.innerHTML);
+            } else {
+                temp *= parseFloat(column.innerHTML) * 100;
+                tempTotal += parseFloat(column.innerHTML);
+            }
         }
         score += temp;
         total += tempTotal;
-      }
-      document.getElementById("demo").innerHTML =
-        Math.round((score / total) * 100) / 100 + "%";
-      return score / total;
     }
+    totalScore = Math.round((score / total) * 100) / 100 + "%";
+    document.getElementById("demo").innerHTML = totalScore;
+    return score / total;
+}
+
 
     $(".pageLink").click(function () {
       var link = "" + $(this).text().toLowerCase() + ".html";
