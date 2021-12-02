@@ -20,6 +20,18 @@
 .modal-backdrop {
    z-index: -1;
 }
+.modal-dialog{
+   height: 1000px !important;
+}
+.modal-content{
+   height: 70%;
+   padding: 64px;
+   background-color: white;
+}
+.modal-footer{
+   background-color: white;
+}
+
 button {
    background-color: transparent;
    background-repeat: no-repeat;
