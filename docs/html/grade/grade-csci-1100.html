@@ -202,6 +202,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -226,6 +227,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -250,6 +252,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -274,6 +277,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -298,6 +302,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -322,6 +327,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -346,6 +352,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -370,6 +377,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -394,6 +402,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <tr classname="row">
@@ -418,6 +427,7 @@
                     ></a>
                   </p>
                 </td>
+                <td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>
               </tr>
 
               <!-- GRADE GOES HERE-->
@@ -475,6 +485,7 @@
       var cell3 = row.insertCell(3);
       var cell4 = row.insertCell(4);
       var cell5 = row.insertCell(5);
+      var cell6 = row.insertCell(6);
       cell0.setAttribute("align", "right");
       var year = String(newDate).slice(0,4);
       var month = String(newDate).slice(5,7);
@@ -489,7 +500,14 @@
       cell4.innerHTML = newWeight + '%';
       cell5.setAttribute("align", "center");
       cell5.innerHTML = '<i color= "#6CA0DC " class="fa fa-laptop fa-lg"></i>';
+      cell6.innerHTML = '<td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>';
     }
+
+    function deleteRow(o) {
+     var p=o.parentNode.parentNode;
+         p.parentNode.removeChild(p);
+    }
+
 
     $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
@@ -523,7 +541,7 @@
         columns = row.getElementsByTagName("td");
         temp = 0;
         tempTotal = 0;
-        for (columnIt = 2; columnIt < columns.length - 1; columnIt += 1) {
+        for (columnIt = 2; columnIt < columns.length - 2; columnIt += 1) {
             column = columns[columnIt];
             if (columnIt === 2) {
                 temp += parseFloat(column.innerHTML);
