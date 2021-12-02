@@ -30,7 +30,7 @@ $(function () {
 
     $('#nname').val('');
     $('#nlink').val('');
-    $('#ndate').val(22);
+    $('#ndate').val(2);
     event.preventDefault();
   });
 })
