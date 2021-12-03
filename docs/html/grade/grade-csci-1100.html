@@ -475,38 +475,41 @@
   </body>
 
   <script>
-    function insertGrade(newDate, newAssignment, newGrade, newMax, newWeight){
-      var tables = document.getElementsByTagName("table");
-      var table = tables[0];
-      var row = table.insertRow(1);
-      var cell0 = row.insertCell(0);
-      var cell1 = row.insertCell(1);
-      var cell2 = row.insertCell(2);
-      var cell3 = row.insertCell(3);
-      var cell4 = row.insertCell(4);
-      var cell5 = row.insertCell(5);
-      var cell6 = row.insertCell(6);
-      cell0.setAttribute("align", "right");
-      var year = String(newDate).slice(0,4);
-      var month = String(newDate).slice(5,7);
-      var date = String(newDate).slice(8,);
-      cell0.innerHTML = month + "/" + date + "/" + year;
-      cell1.innerHTML = newAssignment;
-      cell2.setAttribute("align", "center");
-      cell2.innerHTML = newGrade;
-      cell3.setAttribute("align", "center");
-      cell3.innerHTML = newMax;
-      cell4.setAttribute("align", "center");
-      cell4.innerHTML = newWeight + '%';
-      cell5.setAttribute("align", "center");
-      cell5.innerHTML = '<i color= "#6CA0DC " class="fa fa-laptop fa-lg"></i>';
-      cell6.innerHTML = '<td><button type="submit" onclick="deleteRow(this)"> <i class="fas fa-times"></i> </button></td>';
-    }
+    function insertGrade(newDate, newAssignment, newGrade, newMax, newWeight) {
+    var tables = document.getElementsByTagName("table");
+    var table = tables[0];
+    var row = table.insertRow(1);
+    var cell0 = row.insertCell(0);
+    var cell1 = row.insertCell(1);
+    var cell2 = row.insertCell(2);
+    var cell3 = row.insertCell(3);
+    var cell4 = row.insertCell(4);
+    var cell5 = row.insertCell(5);
+    var cell6 = row.insertCell(6);
+    var year = 0;
+    var month = 0;
+    var date = 0;
+    cell0.setAttribute("align", "right");
+    year = String(newDate).slice(0, 4);
+    month = String(newDate).slice(5, 7);
+    date = String(newDate).slice(8, String(newDate).length);
+    cell0.innerHTML = month + "/" + date + "/" + year;
+    cell1.innerHTML = newAssignment;
+    cell2.setAttribute("align", "center");
+    cell2.innerHTML = newGrade;
+    cell3.setAttribute("align", "center");
+    cell3.innerHTML = newMax;
+    cell4.setAttribute("align", "center");
+    cell4.innerHTML = newWeight + "%";
+    cell5.setAttribute("align", "center");
+    cell5.innerHTML = "<i color= #6CA0DC class='fa fa-laptop fa-lg'></i>";
+    cell6.innerHTML = "<td><button type='submit' onclick='deleteRow(this)'> <i class='fas fa-times'></i> </button></td>";
+}
 
-    function deleteRow(o) {
-     var p=o.parentNode.parentNode;
-         p.parentNode.removeChild(p);
-    }
+function deleteRow(o) {
+    var p = o.parentNode.parentNode;
+    p.parentNode.removeChild(p);
+}
 
 
     $('#myModal').on('shown.bs.modal', function () {
